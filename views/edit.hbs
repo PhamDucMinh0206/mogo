@@ -7,9 +7,10 @@
     <title>Edit Product</title>
 </head>
 <body>
+  
     <form action="/update" method="post">
       <input type="hidden" name ="id" value="{{product._id}}">
-      Name <input type="text" name="txtInsert" value="{{product.name}}">
+      Name <input type="text" name="txtName" value="{{product.name}}">
       <br>
       Price <input type="text" name="txtPrice" value="{{product.price}}">
       <span style="color: red;">{{priceError}}</span>
