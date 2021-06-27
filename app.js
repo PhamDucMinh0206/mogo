@@ -133,7 +133,7 @@ app.post('/doRegister',async (req,res)=>{
 app.get('/insert',(req,res)=>{
     res.render('insert')
 })
-app.get('/homelog',(req,res)=>{
+app.get('/home',(req,res)=>{
     res.redirect('login');
 })
 
