@@ -76,7 +76,12 @@ app.get('/edit',async (req,res)=>{
     const client= await MongoClient.connect(url);
     const dbo = client.db("phanminhDB");
     const productToEdit = await dbo.collection("SanPham").findOne(condition);
-    res.render('edit',{product:productToEdit})
+    if(priceInput.trim().length ==0 || (isNaN(priceInput)==true || priceInput <=10)){
+        res.render('edit',{priceError: 'Price k phai la so hoac lon hon 10'})
+     }else{
+        res.render('edit',{product:productToEdit})
+    }
+    
 })
 
 app.get('/view',async (req,res)=>{
@@ -93,7 +98,10 @@ app.post('/doInsert', async (req,res)=>{
     const priceInput = req.body.txtPrice;
     const newProduct = {name:nameInput, price:priceInput, size : {dai:20, rong:40}}
     await dbHandler.insertOneIntoCollection(newProduct,"SanPham");
-     if(priceInput.trim().length ==0 || (isNaN(priceInput)==true || priceInput <=10)){
+    if(nameInput.length > 5 || nameInput.length <15){
+        res.render('insert',{nameError: 'ten phai lon hon 5 ki tu'})
+    }
+    else if(priceInput.trim().length ==0 || (isNaN(priceInput)==true || priceInput <=10)){
         res.render('insert',{priceError: 'Price k phai la so hoac lon hon 10'})
      }else{
         res.render('index')

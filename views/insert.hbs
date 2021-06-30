@@ -29,12 +29,13 @@
 <form action="/doInsert" method="post" >
   <div class="mb-3">
     <label for="txtName" class="form-label">Name</label>
-    <input type="text" class="form-control" id="txtName"  name="txtName" >
+     <span style="color: red;">{{nameError}}</span>
+    <input type="text" class="form-control" id="txtName"  name="txtName" required>
   </div>
   <div class="mb-3">
     <label for="txtPrice" class="form-label">Price</label>
     <span style="color: red;">{{priceError}}</span>
-    <input type="text" class="form-control" id="txtPrice" name="txtPrice">
+    <input type="text" class="form-control" id="txtPrice" name="txtPrice" required>
   </div>
   
   <button type="submit" class="btn btn-primary">Insert</button>
